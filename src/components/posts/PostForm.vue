@@ -1,39 +1,32 @@
 <template>
-  <div class="container">
-    <div class="col-md-12 mb-5">
-      <h2>Creat a new Post</h2>
+  <form @submit.prevent="validate">
+    <div class="mb-3">
+      <label for="titlesec" class="form-label">Title : </label>
+      <input
+        name="titlesec"
+        type="text"
+        class="form-control"
+        placeholder="Enter the title"
+        v-model.lazy.trim="postform.title"
+      />
+      <div class="form-text text-danger">{{ postform.errortitletext }}</div>
     </div>
-    <div class="col-md-6">
-      <form @submit.prevent="validate">
-        <div class="mb-3">
-          <label for="titlesec" class="form-label">Title : </label>
-          <input
-            name="titlesec"
-            type="text"
-            class="form-control"
-            placeholder="Enter the title"
-            v-model.lazy.trim="postform.title"
-          />
-          <div class="form-text text-danger">{{ postform.errortitletext }}</div>
-        </div>
-        <div class="mb-3">
-          <label for="bodysec" class="form-label">Body : </label>
-          <textarea
-            name="bodysec"
-            class="form-control"
-            rows="5"
-            placeholder="Enter the body"
-            v-model.lazy.trim="postform.body"
-          ></textarea>
-          <div class="form-text text-danger">{{ postform.errorbodytext }}</div>
-        </div>
-        <button type="submit" class="btn btn-primary" :disabled="loading">
-          <div v-if="loading" class="spinner-border spinner-border-sm" role="status"></div>
-          Creat
-        </button>
-      </form>
+    <div class="mb-3">
+      <label for="bodysec" class="form-label">Body : </label>
+      <textarea
+        name="bodysec"
+        class="form-control"
+        rows="5"
+        placeholder="Enter the body"
+        v-model.lazy.trim="postform.body"
+      ></textarea>
+      <div class="form-text text-danger">{{ postform.errorbodytext }}</div>
     </div>
-  </div>
+    <button type="submit" class="btn btn-primary" :disabled="loading">
+      <div v-if="loading" class="spinner-border spinner-border-sm" role="status"></div>
+      Creat
+    </button>
+  </form>
 </template>
 
 <script>

@@ -7,6 +7,7 @@ import Templateposts from '../pages/posts/Template.vue'
 import getPosts from '../pages/posts/Index.vue'
 import Showpost from '../pages/posts/ShowPost.vue'
 import CreatPost from '../pages/posts/CreatPost.vue'
+import EditPost from '../pages/posts/EditPost.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -51,6 +52,11 @@ const router = createRouter({
           path: '/creat',
           name: 'creatPost',
           component: CreatPost,
+        },
+        {
+          path: '/edit',
+          name: 'editPost',
+          component: EditPost,
         },
       ],
     },

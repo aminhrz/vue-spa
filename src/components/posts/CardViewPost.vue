@@ -9,7 +9,9 @@
       <router-link class="btn btn-primary" :to="{ name: 'idPosts', params: { id: post.id } }"
         >Show post</router-link
       >
-      <RouterLink class="btn btn-primary ml-2" :to="{ name: 'editPost' }">edit post</RouterLink>
+      <RouterLink class="btn btn-primary ml-2" :to="{ name: 'editPost', params: { id: post.id } }"
+        >edit post</RouterLink
+      >
     </div>
   </div>
 </template>

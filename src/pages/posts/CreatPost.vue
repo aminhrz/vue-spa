@@ -3,7 +3,9 @@
     <div class="col-md-12 mb-5">
       <h2>Creat a new Post</h2>
     </div>
-    <div class="col-md-6"><PostForm @formData="CreatPost" :btn-loading="loading" /></div>
+    <div class="col-md-6">
+      <PostForm @formData="CreatPost" :btn-loading="loading" btn-text="creat post" />
+    </div>
   </div>
 </template>
 

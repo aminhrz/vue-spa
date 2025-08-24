@@ -25,7 +25,7 @@ export default {
     const loading = ref(true)
     const route = useRoute()
 
-    function getUsers() {
+    function getPosts() {
       axios
         .get(`https://jsonplaceholder.typicode.com/posts/${route.params.id}`)
         .then(function (response) {
@@ -36,7 +36,7 @@ export default {
           console.log(error)
         })
     }
-    getUsers()
+    getPosts()
     return {
       post,
       loading,

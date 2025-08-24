@@ -24,7 +24,7 @@
     </div>
     <button type="submit" class="btn btn-primary" :disabled="btnLoading">
       <div v-if="btnLoading" class="spinner-border spinner-border-sm" role="status"></div>
-      Creat
+      {{ btnText }}
     </button>
   </form>
 </template>
@@ -35,6 +35,8 @@ import { reactive } from 'vue'
 export default {
   props: {
     btnLoading: Boolean,
+    btnText: String,
+    post: Object,
   },
   setup(props, { emit }) {
     const postform = reactive({
@@ -43,7 +45,11 @@ export default {
       errortitletext: '',
       errorbodytext: '',
     })
-
+    function setItemsEdit() {
+      postform.title = props.post.title
+      postform.body = props.post.body
+    }
+    setItemsEdit()
     function validate() {
       if (postform.title === '') {
         postform.errortitletext = 'This field is requarid'

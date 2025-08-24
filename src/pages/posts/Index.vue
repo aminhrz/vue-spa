@@ -1,5 +1,8 @@
 <template>
   <div class="row">
+    <div v-if="noRespond" class="">
+      {{ noRespond }}
+    </div>
     <div class="col-12 mb-5">
       <RouterLink class="btn btn-primary" :to="{ name: 'creatPost' }">New Post +</RouterLink>
     </div>
@@ -25,6 +28,7 @@ export default {
   setup() {
     const posts = ref([])
     const loading = ref(true)
+    const noRespond = 'Server is not Respond'
     function getPosts() {
       axios
         .get('https://jsonplaceholder.typicode.com/posts')
@@ -33,13 +37,14 @@ export default {
           loading.value = false
         })
         .catch(function (error) {
-          console.log(error)
+          noRespond
         })
     }
     getPosts()
     return {
       posts,
       loading,
+      noRespond,
     }
   },
 }

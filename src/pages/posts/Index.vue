@@ -1,14 +1,14 @@
 <template>
   <div class="row">
-    <div v-if="noRespond" class="">
-      {{ noRespond }}
-    </div>
     <div class="col-12 mb-5">
       <RouterLink class="btn btn-primary" :to="{ name: 'creatPost' }">New Post +</RouterLink>
     </div>
     <div v-if="loading" class="col-12">
       <div class="spinner-border" role="status">
         <span class="visually-hidden"></span>
+      </div>
+      <div v-if="noRespond" class="notrespond">
+        {{ noRespond }}
       </div>
     </div>
     <div v-else class="col-md-6" v-for="post in posts" :key="post.id">
@@ -50,4 +50,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.notrespond {
+  padding: 20px 0;
+}
+</style>

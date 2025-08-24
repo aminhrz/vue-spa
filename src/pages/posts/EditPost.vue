@@ -26,6 +26,7 @@ export default {
   },
   setup() {
     const loading = ref(false)
+    const pageLoading = ref(true)
     const route = useRoute()
     const post = ref({})
     onMounted(() => {
@@ -33,6 +34,7 @@ export default {
         .get(`https://jsonplaceholder.typicode.com/posts/${route.params.id}`)
         .then((res) => {
           post.value = res.data
+          pageLoading.value = false
         })
         .catch((err) => console.log(err))
     })
@@ -58,7 +60,7 @@ export default {
           console.log(error)
         })
     }
-    return { EditPost, post, loading }
+    return { EditPost, post, loading, pageLoading }
   },
 }
 </script>

@@ -12,14 +12,39 @@
       <RouterLink class="btn btn-primary ml-2" :to="{ name: 'editPost', params: { id: post.id } }"
         >edit post</RouterLink
       >
+      <button @click="DeletPost" class="btn btn-warning ml-2">Delete</button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+import Swal from 'sweetalert2'
+import { useRoute } from 'vue-router'
+
 export default {
   props: {
     post: Object,
+  },
+  setup() {
+    const route = useRoute()
+    function DeletPost() {
+      axios
+        .delete(`https://jsonplaceholder.typicode.com/posts/${route.params.id}`)
+        .then(function () {
+          Swal.fire({
+            title: 'Post Deleted !',
+            icon: 'success',
+            draggable: true,
+          })
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    }
+    return {
+      DeletPost,
+    }
   },
 }
 </script>

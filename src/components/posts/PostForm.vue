@@ -46,8 +46,10 @@ export default {
       errorbodytext: '',
     })
     function setItemsEdit() {
-      postform.title = props.post.title
-      postform.body = props.post.body
+      if (props.post !== undefined) {
+        postform.title = props.post.title
+        postform.body = props.post.body
+      }
     }
     setItemsEdit()
     function validate() {
